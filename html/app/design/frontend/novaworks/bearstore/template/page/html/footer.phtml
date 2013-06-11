@@ -1,0 +1,160 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+ $twitter_account		=	Mage::getStoreConfig('themeoptions_general/general_options/your_twitter_account', $storeId);
+ $fb_url						=	Mage::getStoreConfig('themeoptions_general/general_options/your_fb_url', $storeId);
+ $gotop_button			=	Mage::getStoreConfig('themeoptions_general/general_options/gotop_button', $storeId);
+?>
+<?php if ($block_bottom_info = $this->getLayout()->createBlock('cms/block')->setBlockId('block_bottom_info')->toHtml()): ?>
+<div class="footer-info-top">
+	<div class="footer-info">
+	<?php echo $block_bottom_info;?>
+	</div>
+</div>
+<?php endif;?>	
+<div class="footer-info-container">
+    <div class="footer-info">
+    	<div class="row-fluid">
+	    	<div class="span7 about-responsive">
+				<?php if ($block_about_box = $this->getLayout()->createBlock('cms/block')->setBlockId('block_about_box')->toHtml()): ?>
+					<?php echo $block_about_box; ?>
+				<?php endif;?>			
+			</div>
+			<div class="span5 nova-newsletter-box">
+				<div class="newsletter-box">
+						<?php echo $this->getChildHtml('newsletter') ?>
+				</div>
+				<div class="contact-us">
+					<?php if ($block_contact_box = $this->getLayout()->createBlock('cms/block')->setBlockId('block_contact_box')->toHtml()): ?>
+						<?php echo $block_contact_box; ?>
+					<?php endif;?>
+					<div class="block-bottom-right">
+						<?php if ($block_bottom_right = $this->getLayout()->createBlock('cms/block')->setBlockId('block_bottom_right')->toHtml()): ?>
+							<?php echo $block_bottom_right; ?>
+						<?php endif;?>			
+					</div>			
+				</div>
+			</div>
+		</div>
+    </div>
+</div>   
+<div class="footer-container">
+	<div class="footer-aditional">
+		<div class="box-border-3 border-top pading-top-bottom-20">
+			<div class="aditional-left">
+		    	<?php if ($aditional_footer_left = $this->getLayout()->createBlock('cms/block')->setBlockId('aditional_footer_left')->toHtml()): ?>
+			    	<?php echo $aditional_footer_left; ?>
+			    <?php endif;?>				
+			</div>
+		<div class="facebook">
+		<?php if($fb_url):?>
+			<h4>FACEBOOK</h4>
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  	var js, fjs = d.getElementsByTagName(s)[0];
+			  	if (d.getElementById(id)) return;
+			  	js = d.createElement(s); js.id = id;
+			  	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=129137010571421";
+			  	fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+			</script>
+			<div class="fb-like-box" data-href="<?php echo $fb_url?>" data-width="205" data-height="300" data-show-faces="true" data-colorscheme="light" data-stream="false" data-header="true"></div>	
+			<?php endif?>		
+		</div>
+		<div class="twitter">
+		<?php if($twitter_account):?>
+			<h4>TWITER</h4>
+			<div class="twitter-posts">
+			  <script type="text/javascript">
+			function parseTwitterDate($stamp)
+			{		
+			// convert to local string and remove seconds and year //		
+				var date = new Date(Date.parse($stamp)).toLocaleString().substr(0, 16);
+			// get the two digit hour //
+				var hour = date.substr(-5, 2);
+			// convert to AM or PM //
+				var ampm = hour<12 ? ' AM' : ' PM';
+				if (hour>12) hour-= 12;
+				if (hour==0) hour = 12;
+			// return the formatted string //
+				return date.substr(0, 11)+' - ' + hour + date.substr(13) + ampm;
+			}
+			
+			function format_twitter(twitters) {
+			var statusHTML = [];
+			for (var i=0; i<twitters.length; i++){
+			var username = twitters[i].user.screen_name;
+			var created_at = twitters[i].created_at;
+			
+			var status = twitters[i].text.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function(url) {
+			return '<a href="'+url+'">'+url+'</a>';
+			}).replace(/\B@([_a-z0-9]+)/ig, function(reply) {
+			return reply.charAt(0)+'<a href="http://twitter.com/'+reply.substring(1)+'">'+reply.substring(1)+'</a>';
+			});
+			statusHTML.push('<li><div class="tweet-icon"></div><div class="text">'+status+'</div><div class="created">'+parseTwitterDate(created_at)+'</div></li>');
+			}
+			return statusHTML.join('');
+			}
+			  </script>
+			  <script type="text/javascript">
+			jQuery(document).ready(function($){
+			$.getJSON('http://api.twitter.com/1/statuses/user_timeline/<?php echo$twitter_account?>.json?count=3&callback=?', function(tweets){
+			$("#twitter_update_list").html(format_twitter(tweets));
+			});
+			});
+			</script>
+			<ul id="twitter_update_list"></ul>
+			</div>
+			<?php endif?>
+		</div>
+		
+	</div>
+	</div>
+</div>
+<div class="copyright-footer">
+	<div class="footer">
+		<div class="row-fluid">	    
+	    	<div class="span8">
+		    	<div class="footer-left">
+			    	<?php echo $this->getChildHtml('footer_links') ?>
+		    	</div>
+	    	</div>
+	    	<div class="span4">
+		    	<div class="footer-right">
+		        	<address><?php echo $this->getCopyright() ?></address>
+		    	</div> 
+	    	</div>
+	    </div>
+    </div>
+</div>
+<?php
+if($gotop_button):
+?>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery().UItoTop({ easingType: 'easeOutQuart' });		
+});
+</script>
+<?php endif;?>

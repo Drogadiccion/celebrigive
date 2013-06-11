@@ -1,0 +1,32 @@
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('productvideo/data');
+$_productVideos = $this->_getProductVideos();
+?>
+
+	<div class="video-views">
+	    <ul>
+            <?php foreach($_productVideos as $video) : ?>  
+            <?php
+                $video_code = $this->getCode($video);
+                $video_title = $this->getTitle($video);
+                $video_thumb_width = $this->getThumbWidth($video);
+                $video_thumb_height = $this->getThumbHeight($video);
+                $video_width = $this->getWidth($video);
+                $video_height = $this->getHeight($video);             
+            ?>
+                <li><a class="youtube" title="<?php echo $this->htmlEscape($video_title) ?>" href="http://www.youtube.com/v/<?php echo $video_code?>?fs=1&amp;hl=en_US"><img width="<?php echo $video_thumb_width?>" height="<?php echo $video_thumb_height?>" src="http://img.youtube.com/vi/<?php echo $video_code?>/1.jpg" alt="<?php echo $this->htmlEscape($video_title) ?>" /></a></li>
+	       
+
+		<script>
+			jQuery(document).ready(function(){
+				jQuery(".youtube").colorbox({iframe:true, innerWidth:<?php echo($video_width)?>, innerHeight:<?php echo($video_height)?>, opacity:0.5});
+			});
+		</script>
+           
+           
+           
+           <?php endforeach; ?>
+        </ul>
+	</div>
+

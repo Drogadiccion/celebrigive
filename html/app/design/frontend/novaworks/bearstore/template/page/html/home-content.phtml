@@ -1,0 +1,181 @@
+<?php
+$first_status 					= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/first_status', $storeId));
+$second_status 					= intval( Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/second_status', $storeId));
+$third_status					= intval( Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/third_status', $storeId));
+if($first_status):
+$homecoltitle_1_1 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecoltitle_1_1', $storeId);
+$homeinfostype_1_1 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeinfostype_1_1', $storeId);
+$homeproductstype_1_1		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeproductstype_1_1', $storeId);
+$productsamount_1_1			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productsamount_1_1', $storeId);
+$homesliderstype_1_1		= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homesliderstype_1_1', $storeId));
+$homecustomblock_1_1		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecustomblock_1_1', $storeId);
+$ajax_cart		 						= Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/ajax_cart', $storeId); 
+if($homeinfostype_1_1 == 1) :
+    if ($homeproductstype_1_1 == 'new'):
+    
+    $_products = Mage_Catalog_Block_Product_New::getProductCollection()->setPageSize($productsamount_1_1);  
+    elseif ($homeproductstype_1_1 == 'bestsellers'):
+    
+    $_products = Mage::getResourceModel('reports/product_collection')
+        ->addAttributeToSelect('*')
+        ->addOrderedQty()
+        ->setOrder('ordered_qty', 'desc')
+        ->setPageSize($productsamount_1_1);
+    
+    else:
+    
+    $_products = Mage::getResourceModel('catalog/product_collection')
+    ->addAttributeToSelect('*')
+    ->addCategoryFilter(Mage::getModel('catalog/category')->load($homeproductstype_1_1))
+    ->setPageSize($productsamount_1_1);
+    endif;
+endif;  
+endif; 
+if($second_status):
+$homecoltitle_1_2 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecoltitle_1_2', $storeId);
+$homeinfostype_1_2 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeinfostype_1_2', $storeId);
+$homeproductstype_1_2		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeproductstype_1_2', $storeId);
+$productsamount_1_2			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productsamount_1_2', $storeId);
+$homesliderstype_1_2		= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homesliderstype_1_2', $storeId));
+$homecustomblock_1_2		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecustomblock_1_2', $storeId);
+if($homeinfostype_1_2 == 1) :
+    if ($homeproductstype_1_2 == 'new'):
+    $_products_2 = Mage_Catalog_Block_Product_New::getProductCollection()->setPageSize($productsamount_1_2);
+    elseif ($homeproductstype_1_2 == 'bestsellers'):
+    $_products_2 = Mage::getResourceModel('reports/product_collection')
+        ->addAttributeToSelect('*')
+        ->addOrderedQty()
+        ->setOrder('ordered_qty', 'desc')
+        ->setPageSize($productsamount_1_2);    
+    else:
+    
+    $_products_2 = Mage::getResourceModel('catalog/product_collection')
+    ->addAttributeToSelect('*')
+    ->addCategoryFilter(Mage::getModel('catalog/category')->load($homeproductstype_1_2))
+    ->setPageSize($productsamount_1_2);
+    endif;
+endif; 
+endif; 
+if($third_status):
+$homecoltitle_1_3 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecoltitle_1_3', $storeId);
+$homeinfostype_1_3 			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeinfostype_1_3', $storeId);
+$homeproductstype_1_3		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homeproductstype_1_3', $storeId);
+$productsamount_1_3			= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productsamount_1_3', $storeId);
+$homesliderstype_1_3		= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homesliderstype_1_3', $storeId));
+$homecustomblock_1_3		= Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/homecustomblock_1_3', $storeId);
+
+if($homeinfostype_1_3 == 1) :
+    if ($homeproductstype_1_3 == 'new'):
+    
+    $_products_3 = Mage_Catalog_Block_Product_New::getProductCollection()->setPageSize($productsamount_1_3);  
+    elseif ($homeproductstype_1_3 == 'bestsellers'):
+    
+    $_products_3 = Mage::getResourceModel('reports/product_collection')
+        ->addAttributeToSelect('*')
+        ->addOrderedQty()
+        ->setOrder('ordered_qty', 'desc')
+        ->setPageSize($productsamount_1_3);
+    
+    else:
+    
+    $_products_3 = Mage::getResourceModel('catalog/product_collection')
+    ->addAttributeToSelect('*')
+    ->addCategoryFilter(Mage::getModel('catalog/category')->load($homeproductstype_1_3))
+    ->setPageSize($productsamount_1_3);
+    endif;
+endif; 
+endif;
+?>
+<div class="home-content-container">
+	<div class="home-content">	
+		<?php if($first_status):?>	
+			<div class="first-row">
+				<?php if($homecoltitle_1_1):?><div class="home-list-title"><h3 class="title"><?php echo $this->__($homecoltitle_1_1) ?></h3></div><?php endif;?>
+				<?php if($homeinfostype_1_1==1):?>
+					<?php if ($_products->getSize()): ?>
+							<?php include("products-list-slider.phtml"); ?>
+					<?php endif; ?>
+				<?php else: ?>
+				    	<?php if ($custom_block = $this->getLayout()->createBlock('cms/block')->setBlockId($homecustomblock_1_1)->toHtml()): ?>
+				    	<div class="home-custom-block">
+					    	<?php echo $custom_block; ?>
+				    	</div>
+					    <?php endif;?>			
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if($second_status):?>	
+			<div class="second-row">
+				<?php if($homecoltitle_1_2):?><div class="home-list-title"><h3 class="title"><?php echo $this->__($homecoltitle_1_2) ?></h3></div><?php endif;?>
+				<?php if($homeinfostype_1_2==1):?>
+					<?php if ($_products_2->getSize()): ?>
+							<?php include("products-list-slider-2.phtml"); ?>
+					<?php endif; ?>
+				<?php else: ?>
+				    	<?php if ($custom_block = $this->getLayout()->createBlock('cms/block')->setBlockId($homecustomblock_1_2)->toHtml()): ?>
+				    	<div class="home-custom-block">
+					    	<?php echo $custom_block; ?>
+				    	</div>
+					    <?php endif;?>			
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if($third_status):?>	
+			<div class="second-row">
+				<?php if($homecoltitle_1_3):?><div class="home-list-title"><h3 class="title"><?php echo $this->__($homecoltitle_1_3) ?></h3></div><?php endif;?>
+				<?php if($homeinfostype_1_3==1):?>
+					<?php if ($_products_3->getSize()): ?>
+							<?php include("products-list-slider-3.phtml"); ?>
+					<?php endif; ?>
+				<?php else: ?>
+				    	<?php if ($custom_block = $this->getLayout()->createBlock('cms/block')->setBlockId($homecustomblock_1_3)->toHtml()): ?>
+				    	<div class="home-custom-block">
+					    	<?php echo $custom_block; ?>
+				    	</div>
+					    <?php endif;?>			
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+		<?php if ($block_home_who = $this->getLayout()->createBlock('cms/block')->setBlockId('block_home_who')->toHtml()): ?>
+		<div class="who-wi-are-container">
+				<?php echo $block_home_who; ?>
+		</div>
+		<?php endif;?>
+		<?php if ($block_brand_list = $this->getLayout()->createBlock('cms/block')->setBlockId('block_brand_list')->toHtml()): ?>
+			<div class="brand-slider-container">
+				<div class="brand-slider">
+					<div class="who-we-are">
+						<div class="row-fluid who-center">
+							<h1 class="title">Our Brands</h1>
+						</div>
+					</div>
+					<div class="brand-list">
+						<?php echo $block_brand_list; ?>	
+					</div>
+				</div>
+			</div>
+		<?php endif;?>		
+	</div>
+</div>
+
+<script type="text/javascript">
+	jQuery.noConflict();
+		jQuery(window).load(function() {
+			jQuery('.brand-list').flexslider({
+			namespace: "nova-slider-",
+			animation: "slide",
+			easing: "easeInQuart",
+			animationLoop: false,
+			slideshow: false,
+			animationSpeed: 400,						
+			pauseOnHover: true,
+			controlNav: false,
+			itemWidth: 225,
+			prevText: "<div><i class=\"icon-left-open-big\"></i></div>",           //String: Set the text for the "previous" directionNav item
+			nextText: "<div><i class=\"icon-right-open-big\"></i></div>",  
+			itemMargin: 0
+		  });
+		});
+</script>

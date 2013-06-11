@@ -1,0 +1,22 @@
+body { color:#999999; }
+a, .dropdown .text { color:#818181; }
+a:hover {
+  color:#f01c35;
+  text-decoration:underline;
+}
+#default-menu #nav li a, #wide-menu #nav > li > a, #wide-menu #nav ul.level0 > li > a, .footer-info-top .footer-info li, .footer-info-container .footer-info .about-responsive h4, .footer-info .newsletter-box .form-subscribe-header, .bottom-menu-column h4, .footer-aditional .facebook h4, .footer-aditional .twitter h4, .category-title h1, .left-categories .block-title span, .block .block-title strong span, #block-viewed strong span, .custom-html strong span, .home-content h3.title, .who-we-are h1, .main .col-main .page-title h1, .col-main .cart-empty a, .about-content .wel-come h2, .about-content .center-title h1, .about-content h2, .afew-container .retina-ready h3, .afew-container .mobile-friendly h3, .afew-container .wide-or h3, .afew-container .responsive-layout h3 { font-family:'CaviarDreamsRegular', sans-serif; }
+h1, h2, h3, h4, h5, h6, .home-content h3.title, .who-we-are h1, .block .block-title strong span, .custom-html strong span, .left-categories .block-title span, .footer-info .newsletter-box .form-subscribe-header { color:#0d0d0d !important; }
+.button:hover, button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, .button:active, button:active, input[type="submit"]:active, input[type="reset"]:active, input[type="button"]:active, .a-few-features a:hover, .header .form-search button.button, .header .shopping-cart:hover .cart_circle, .header .mini-cart .cart_circle.active, .header .mini-cart .cart_circle.active:hover, #cboxClose:hover, #toTop { background-color:#f01c35; }
+.sorter .view-mode .grid:hover, .sorter .view-mode strong, .sorter .view-mode a:hover, .ajax-loading, .sorter .view-mode strong, #twitter_update_list li .tweet-icon { background-color:#f01c35 !important; }
+#wide-menu #nav > li:hover > a, .block-inner-menu h4 { color:#f01c35 !important; }
+.top-dropdown li, .top-header .i-top-links .welcome-msg, #wide-menu #nav > li.active > a, #wide-menu #nav > li.parent:hover > a, .header .mini-cart .block-content .price, #wide-menu #nav > li.parent.active > a, #wide-menu #nav ul.level0 > li > a, #wide-menu #nav ul li a:hover, .sorter .sort-by ul li a.active, .sorter .limiter ul li a.active, .special-price .price, .block .regular-price, .block .regular-price .price, .regular-price .price, .footer-info-container .footer-info .contact-us span, .products-list .desc a.link-learn { color:#f01c35; }
+.footer-info-top i, .contact-us .phone, .contact-us .fax, .contact-us .support, .contact-us em { color:#565656; }
+.quick-act a, .mini-cart-act a, .btn-compare-remove, .nova-slider-direction-nav a, .contact-us .social-icons a, .product-shop i { color:#565656; }
+.quick-act a:hover, .mini-cart-act a:hover, .btn-compare-remove:hover, .nova-slider-direction-nav a:hover, .contact-us .social-icons a:hover, .product-shop i:hover { color:#f01c35; }
+.button, button, input[type="submit"], input[type="reset"], input[type="button"], .products-list .btn-cart, #shopping-cart-table .btn-continue, #shopping-cart-table .btn-update { background-color:#565656; }
+.button:hover, button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover, .products-list .btn-cart:hover, #shopping-cart-table .btn-continue:hover, #shopping-cart-table .btn-update:hover { background-color:#f01c35; }
+.cart .totals .checkout-types li .button { background-color:#f01c35; }
+.cart .totals .checkout-types li .button:hover { background-color:#565656; }
+.nova-new-label { background-color:#d89f04; }
+.nova-sale-label { background-color:#72b166; }
+.easy-slider, .easy-slider #controls a { background:#6f5c68; }

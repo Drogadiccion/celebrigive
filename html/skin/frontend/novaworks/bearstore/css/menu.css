@@ -1,0 +1,302 @@
+#wide-menu {
+}
+#wide-menu #nav {
+}
+/* All Levels */
+#wide-menu #nav li {
+	float:left; 
+	text-align:left; 
+	/*position:relative;*/ /*my:Drop-down position under current tab*/
+}
+#wide-menu #nav li a {
+	color: #a0a0a0;
+	display:block;
+	float:left;
+	border:none;
+	text-decoration:none;
+	transition-duration:			200ms;
+	-moz-transition-duration:		200ms;
+	-webkit-transition-duration:	200ms;
+	-o-transition-duration:			200ms;		
+}
+#wide-menu #nav li a:hover { 
+text-decoration:none; 
+	transition:			color 450ms ease-in-out, background-color 450ms ease-in-out;
+	-moz-transition:	color 450ms ease-in-out, background-color 450ms ease-in-out;
+	-webkit-transition:	color 450ms ease-in-out, background-color 450ms ease-in-out;
+	-o-transition:		color 450ms ease-in-out, background-color 450ms ease-in-out;	
+}
+#wide-menu #nav li.over {}
+#wide-menu #nav li.parent {}
+#wide-menu #nav li a span { 
+	display:block; 
+	white-space:nowrap;
+}
+#wide-menu #nav li ul a span { white-space:normal; }
+/* Only 1st level
+-------------------------------------------------------------- */
+#wide-menu #nav > li {
+ 	display:inline-block;
+	/*position:relative;*/ /*Set to position drop-down under current tab*/
+}
+#wide-menu #nav > li > a {
+	display:block;
+	color:#8d8d8d; 
+	font-family: 'CaviarDreamsRegular',sans-serif;
+	font-size: 18px;
+	line-height: 45px;
+	padding:0 20px;
+	margin-bottom: -5px;
+}
+#wide-menu #nav > li.parent:hover > a,
+#wide-menu #nav > li.parent.active > a {
+	color: #f01c35;
+}
+#wide-menu #nav > li:hover > a {
+	background: #ffffff; 
+	color: #f01c35 !important;
+	border-width : 1px;
+	border-color : transparent;
+	border-style : solid;
+}
+#wide-menu #nav > li> a {
+	border-width : 1px;
+	border-color : transparent;
+	border-style : solid;
+}
+
+#wide-menu #nav > li.active > a {
+	color: #0d0d0d;
+}
+#wide-menu #nav > li:hover > a {
+	position:relative; /*FF: domyslny static sprawia, ze element nie wyplywa na wierzch pomimo wysokiego z-index*/
+	z-index:999999; /* "ul.shown-sub" + 1 */
+	border: 1px solid #cdcdcd;
+	border-bottom: 0;
+}
+
+#wide-menu #nav > li.active > a {} /* For parent items */
+#wide-menu #nav > li > a span {}
+#wide-menu #nav > li.parent:hover > a span,
+#wide-menu #nav > li.parent.active > a span {
+	/* For parent items */
+	display:block;
+}
+#wide-menu #nav > li:hover > a span,
+#wide-menu #nav > li.active > a span {
+	display:block;
+}
+#wide-menu #nav > li:hover > a span {}
+/* Only 2nd level (first subcategory)
+-------------------------------------------------------------- */
+#wide-menu #nav ul.level0 {
+	position:absolute;	
+	top: 45px;
+	left: 0px;
+	padding: 18px 2%;
+	margin: 0;
+	background: #ffffff; 
+	width: 100%;
+	max-width: 940px;
+	z-index: 99999;
+	display: none; 
+	border: 1px solid #cdcdcd;
+	
+}
+#wide-menu #nav ul.level0 {}
+#wide-menu #nav div ul { position:static; width:auto; border:none; } 
+
+/* Block with subcategory title and a list of child categories */
+#wide-menu #nav ul.level0 > li {
+	float:left;
+	width:185px;
+}
+#wide-menu #nav ul.level0 > li.last {}
+#wide-menu #nav ul.level0 > li > a {
+	font-family: 'CaviarDreamsRegular',sans-serif;
+	font-size:17px;
+	color: #f01b37;
+	line-height:14px;
+}
+#wide-menu #nav ul.level0 > li > a:hover {}
+
+/* 2nd level
+-------------------------------------------------------------- */
+#wide-menu #nav ul li a { float:none; }
+#wide-menu #nav ul li a:hover { color: #f01b37; }
+#wide-menu #nav ul li.parent {}
+
+/* 3rd level
+-------------------------------------------------------------- */
+#wide-menu #nav ul ul,
+#wide-menu #nav ul div {
+	position:static !important;
+}
+#wide-menu #nav ul ul {
+	padding-top: 5px;
+}
+#wide-menu #nav ul ul li {
+	float:none;
+	margin: 0;
+	list-style: none;
+	line-height: 25px;
+}
+#wide-menu #nav ul ul li a:hover {
+	text-decoration:underline;
+}
+/* 4th level
+-------------------------------------------------------------- */
+#wide-menu #nav ul.level2 { padding:5px 0 5px 8px; }
+#wide-menu #nav ul.level2 a { color:#aaa; font-size:11px; line-height:15px; }
+
+/* Show menu
+-------------------------------------------------------------- */
+/* default: left:0; Move 8px left (navbar left corner width) */
+#wide-menu #nav ul.level0 > li.menu-content {
+	float:none;
+	width:inherit;
+	margin-right:0;
+	margin-left:0;
+	margin-bottom:0;
+}
+#wide-menu #nav li > ul.shown-sub,
+#wide-menu #nav li > div.shown-sub { left:0;}
+/* deleted:
+#wide-menu #nav li .shown-sub ul.shown-sub,
+#wide-menu #nav li .shown-sub li div.shown-sub { left:100px; }*/
+
+#wide-menu #nav #wide-menu #nav-custom-link > a { cursor:default; }
+#wide-menu #nav .header-nav-dropdown-wrapper { margin:0 0 20px; padding:0; border:0; display: block !important;}
+#wide-menu #nav .header-nav-dropdown-wrapper li {
+	float:left;
+	width:23.125%;
+	margin-right:2.5%;
+}
+#wide-menu #nav .header-nav-dropdown-wrapper li.first {}
+#wide-menu #nav .header-nav-dropdown-wrapper li.last { margin-right:0; }
+#wide-menu #nav .header-nav-dropdown-wrapper p { margin:10px 0; color:#999999; }
+#wide-menu #nav .header-nav-dropdown-wrapper .heading { margin:10px 0; color:#333; }
+
+/********** Navigation > */
+/* ======================================================================================= */
+
+/* All Levels */ /* Style consistent throughout all nav levels */
+#default-menu {}
+#default-menu #nav li { position:relative; text-align:left;  line-height: normal;}
+#default-menu #nav li.over { z-index:998; }
+#default-menu #nav a,
+#default-menu #nav a:hover { display:block; text-decoration:none; }
+#default-menu #nav span { display:block; cursor:pointer; white-space:nowrap; }
+#default-menu #nav li ul span {white-space:normal; }
+#default-menu #nav ul li.parent a {}
+#default-menu #nav ul li.parent li a {}
+/* 0 Level */
+#default-menu #nav li { float:left;  font-size:18px; }
+#default-menu #nav li a{ line-height: 55px;}
+#default-menu #nav li.active a { color: #2d2d2d; }
+#default-menu #nav li a { float:left; padding:0 20px; color:#818181; font-family: 'CaviarDreamsRegular',sans-serif;  	border-width : 1px;border-color : transparent; border-style : solid; border-bottom:0; margin-bottom:-4px;}
+#default-menu #nav li.over a,
+#default-menu #nav li a:hover {
+ color:#ee1c35; 
+	border: 1px solid #cdcdcd;
+	border-bottom: 0; 
+ }
+/* 1st Level */
+#default-menu #nav li ul li a {
+	border:0 !important;
+	margin-bottom:0;
+ }
+#default-menu #nav ul { background: #fff; border: #878787 solid 1px; border-top:none; margin: 0; padding:0}
+#default-menu #nav ul li,
+#default-menu #nav ul li.active { float:none; margin:0; font-size: 12px;}
+#default-menu #nav ul li.last { padding-bottom:0; }
+#default-menu #nav ul li {
+	border-bottom : 1px solid #E9E9E9;
+}
+#default-menu #nav ul {
+}
+#default-menu #nav ul a,
+#default-menu #nav ul li a,
+#default-menu #nav ul a:hover { float:none; padding:0 0 0 20px; background:none !important; font-family: Arial, Helvetica, sans-serif; line-height:30px;}
+#default-menu #nav ul li a { color:#818181 !important; font-weight:bold; }
+#default-menu #nav ul	li a:hover { background: #f6f6f6 !important; color:#ee1c35 !important; }
+#default-menu #nav ul li.active a { font-family: Arial, Helvetica, sans-serif; color:#ee1c35 !important; }
+/* 2nd Level */
+#default-menu #nav ul,
+#default-menu #nav div { position:absolute; width:12em; top:56px; left:-10000px; border: 1px solid #E9E9E9; border-top-color: 0;}
+#default-menu #nav div ul { position:static; width:auto; border:none; }
+
+/* 3rd+ Level */
+#default-menu #nav ul ul,
+#default-menu #nav ul div { top:5px; }
+
+#default-menu #nav ul li a {}
+#default-menu #nav ul li a:hover {}
+#default-menu #nav ul li a,
+#default-menu #nav ul li a:hover {}
+#default-menu #nav ul span,
+#default-menu #nav ul li.last li span {}
+#default-menu #nav li.active ul li a {font-family: Arial, Helvetica, sans-serif !important;}
+#default-menu #nav ul li.active ul li a {color:#818181 !important;} 
+#default-menu #nav ul li.active ul li a:hover {color:#9b0e11 !important;}
+/* Show menu */
+#default-menu #nav li ul.shown-sub,
+#default-menu #nav li div.shown-sub { left:0; z-index:999; }
+#default-menu #nav li .shown-sub ul.shown-sub,
+#default-menu #nav li .shown-sub li div.shown-sub { left:100px; }
+/********** Navigation > */
+/* ======================================================================================= */
+
+
+/********** Mobile Navigation > */
+/* ======================================================================================= */
+.mobi-nav{ 
+    padding:10px;
+    margin: 0 auto;
+    width: 90%;
+}
+.mobi-nav h1 {
+    background: #111;
+    font-size: 16px;
+    line-height: 47px;
+    text-transform: uppercase;  
+    font-weight: normal;  
+    display: inline-block;
+    margin: 0;
+    width: 100%;
+}
+.mobi-nav h1 span {
+    color: #FFFFFF;
+    float: left;
+    padding-left: 10px;
+}
+.mobi-nav h1 a.nav-box {
+    background: url("../images/common.png") no-repeat scroll 0 -361px transparent;
+    float: right;
+    font-size: 0;
+    height: 22px;
+    margin-top: 13px;
+    width: 27px;
+    padding-right:10px;
+}
+#mobi-nav-content {}
+.accordion { list-style-type: none; padding: 0; margin: 0 0 30px; }
+.accordion ul { padding: 0; margin: 0; float: left; display: block; width: 100%; }
+.accordion li { background: #fff; cursor: pointer; list-style-type: none; padding: 0; margin: 0; float: left; display: block; width: 100%; position:relative;}
+.accordion li.active > em.open-close {
+    background: url("../images/common.png") no-repeat scroll 2px -427px transparent;
+}
+.accordion li div { padding: 20px; background: #aef; display: block; clear: both; float: left; width: 360px;}
+.accordion em.open-close {
+    background: url("../images/common.png") no-repeat scroll 2px -392px transparent;
+    padding: 8px 14px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.accordion a { text-decoration: none; border-bottom: 1px solid #F0F0F0; font-size:12px; text-transform:uppercase;padding: 8px 10px; display: block; cursor: pointer; text-align:left;}
+.accordion em{margin-right:10px;}
+.accordion ul a{font-size:11px;}
+.accordion li ul li { background: #F0F0F0; }
+.block-inner-menu { margin-top: 20px; width: 100% !important;}
+.block-inner-menu h4 {font-size: 11px; font-weight: normal;}

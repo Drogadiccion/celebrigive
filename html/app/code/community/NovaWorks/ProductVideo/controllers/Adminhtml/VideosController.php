@@ -1,0 +1,1 @@
+<?phpclass NovaWorks_ProductVideo_Adminhtml_VideosController extends Mage_Adminhtml_Controller_Action {	public function indexAction()     {        $this->loadLayout();        $this->renderLayout();	}}

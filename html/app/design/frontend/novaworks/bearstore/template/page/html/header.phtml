@@ -1,0 +1,109 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<div class="top-header-container">
+    <div class="top-header">
+    	<div class="i-top-links">
+    		<div class="row-fluid">
+    			<div class="span8">
+    				<?php echo $this->getChildHtml('currency') ?>
+    				<?php echo $this->getChildHtml('store_language') ?>
+    				<?php if ($block_top_left = $this->getLayout()->createBlock('cms/block')->setBlockId('block-top-left')->toHtml()): ?>
+    				<div class="top-menu-left">
+    				<?php echo $block_top_left;?>
+    				</div>
+					<?php endif?>
+    			</div>
+				<div class="span4">
+					<div class="i-top-right">
+						<p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p>
+						<div class="dropdown top-dropdown my-setting">
+						<p class="label"></p><p class="text"><?php echo $this->__('My Settings')?></p>
+						<?php echo $this->getChildHtml('topLinks') ?>
+						</div>
+					</div>
+				</div>
+			</div>
+    	</div>
+    </div>
+</div>
+<div class="header-container">
+    <div class="header">
+    	<div class="i-header-content">
+	    	<div class="row-fluid">
+	    		<div class="span4 header-left-none"></div>
+	    		<div class="span4">
+	    			<div class="header-center">
+		 				<?php if ($this->getIsHomePage()):?>
+		        			<h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+		        		<?php else:?>
+		        			<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+		        		<?php endif?>	
+	        		</div>			
+	        	</div>
+	        	<div class="span4">	
+	        		<div class="headr-right">
+		        		<div class="search-col"><?php echo $this->getChildHtml('topSearch') ?></div>
+		        		<?php echo $this->getChildHtml('top_cart_sidebar') ?> 
+		        	</div>	     
+	        	</div>		       
+			</div>
+		</div>
+        <?php echo $this->getChildHtml('topContainer'); ?>
+    </div>
+</div>
+<?php echo $this->getChildHtml('topMenu') ?>
+<?php
+$homepage_gallery_status		=	Mage::getStoreConfig('themeoptions_homepage/homepage_gallery/status', $storeId); 
+$routeName = Mage::app()->getRequest()->getRouteName();  
+$identifier = Mage::getSingleton('cms/page')->getIdentifier();  
+?>
+<?php
+if($routeName == 'cms' && $identifier == Mage::getStoreConfig('web/default/cms_home_page')):
+	echo $this->getChildHtml('revslideshow.homepage');
+	if($easy_1 =  $this->getLayout()->createBlock('cms/block')->setBlockId('block-easy-slider-1')->toHtml()):
+	echo '<div class="easy-slider">
+<div class="slice1">';
+	echo $easy_1;
+	echo '</div></div>';
+	endif;
+	if($easy_2 =  $this->getLayout()->createBlock('cms/block')->setBlockId('block-easy-slider-2')->toHtml()):
+	echo '<div class="easy-slider">
+<div class="slice1">';
+	echo $easy_2;
+	echo '</div></div>';
+	endif;
+	endif; 
+?>
+
+<?php
+if($routeName == 'cms' && $identifier == Mage::getStoreConfig('web/default/cms_home_page')):
+	echo $this->getChildHtml('home.content'); 
+endif; 
+?>

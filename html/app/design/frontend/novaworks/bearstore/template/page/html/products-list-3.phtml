@@ -1,0 +1,82 @@
+<?php
+$ajax_cart		 						= Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/ajax_cart', $storeId); 
+$productseachrow_1_3				= intval(Mage::getStoreConfig('themeoptions_homepage_content/homepagecontent/productseachrow_1_3', $storeId));
+ $thumb_width_3 					= intval(Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/thumb_width_3', $storeId));
+ $thumb_height_3 					= intval(Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/thumb_height_3', $storeId));
+ $thumb_width_4 					= intval(Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/thumb_width_4', $storeId));
+ $thumb_height_4 					= intval(Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/thumb_height_4', $storeId)); 
+ $rating_wishlist_compare = Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/rating_wishlist_compare', $storeId); 
+ $image_product_hover 		= Mage::getStoreConfig('themeoptions_general/prodcuts_list_page/image_product_hover', $storeId); 
+ if($productseachrow_1_3==4) {
+	 $thumb_width = $thumb_width_3;
+	 $thumb_height = $thumb_height_3;
+ }elseif($productseachrow_1_3==5) {
+	 $thumb_width = $thumb_width_4;
+	 $thumb_height = $thumb_height_4;
+ }
+$_columnCount = $productseachrow_1_3;  
+?>
+<ul class="products-grid default-list defaut-col<?php echo $productseachrow_1_3?>">
+    <?php $i=0; foreach ($_products_3->getItems() as $_product): ?>
+			<li class="item">
+            	<div class="products-grid-inner">
+            	<?php include('labels.phtml')  ?>
+	                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($thumb_width,$thumb_height) ?>" width="<?php echo $thumb_width?>" height="<?php echo $thumb_height?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+		          		<?php 
+		                	if($image_product_hover):
+		                 	$_gallery = Mage::getModel('catalog/product') -> load($_product -> getId()) -> getMediaGalleryImages();
+		                 	foreach ($_gallery as $_image ):
+		           		?>
+		            	<img class="swap-image" src="<?php echo $this -> helper('catalog/image') -> init($_product, 'thumbnail', $_image -> getFile()) -> resize($thumb_width, $thumb_height);?>" width="<?php echo $thumb_width?>" height="<?php echo $thumb_height?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>"/>
+		            	<?php
+							break;
+							endforeach;
+							endif;
+						?>
+			  		</a>
+			     	<?php if($ajax_cart):?>    
+			        <div id="imgaddtocart<?php echo $_product->getId()?>" style="display: none;"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(75); ?>" width="75" height="75" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></div>     
+				<?php endif; ?>                
+	            </div>
+				<div class="socialToolBar">
+					<h3 class="product-name">
+						<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a>						
+					</h3>
+					<?php if($ajax_cart):?> 
+					<div id='productname<?php echo $_product->getId()?>' style='display:none'><?php echo $this->htmlEscape($_product->getName()) ?></div>
+					<?php endif; ?>                   
+					<?php echo $this->getPriceHtml($_product, true, '-new') ?>               
+					<div class="actions">
+					<?php if(!$_product->isSaleable()): ?>
+						<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+					<?php endif; ?>
+					</div>     
+					<?php if($rating_wishlist_compare):?>                                
+				 
+					<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+					<div class="wishlist-compare">
+						<?php if ($this->helper('wishlist')->isAllow()) : ?>
+						<a class="wishlist" href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" title="<?php echo $this->__('Add to Wishlist') ?>"><span><?php echo $this->__('Add to Wishlist') ?></span></a>
+						<span class="dcack">-</span>
+						<?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+						<a class="compare" href="<?php echo $_compareUrl ?>" title="<?php echo $this->__('Add to Compare') ?>"><span><?php echo $this->__('Add to Compare') ?></span></a>
+						<?php endif; ?> 
+					
+						<?php endif; ?>			
+					</div>
+					<?php endif;?>	            
+					<?php if($_product->isSaleable()): ?>
+					<?php if($ajax_cart):?>  
+					<?php if ( !($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped()) ) { ?>
+					<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocationAjax('<?php echo $this->getAddToCartUrl($_product) ?>','<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+					<?php } else { ?>
+					<a href='<?php echo $this->getUrl('ajax/index/options',array('product_id'=>$_product->getId()));?>' class='btn-cart button colorbox' id='colorbox<?php echo $_product->getId()?>'><?php echo $this->__('Add to Cart') ?></a>
+					<?php }  ?>
+					<?php else:?>
+					<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+					<?php endif; ?>
+					<?php endif; ?>
+				</div>
+            </li>
+    <?php endforeach; ?>
+        </ul>    

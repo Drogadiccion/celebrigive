@@ -1,0 +1,185 @@
+@background_color : @d_background_color;
+@text_color : @d_text_color;
+@link_color : @d_link_color;
+@active_color : @d_active_color;
+@heading_color : @d_heading_color;
+@icons_color : @d_icons_color;
+@buttons_color : @d_buttons_color;
+@buttons_hover_color : @d_buttons_hover_color;
+@new_label_color : @d_new_label_color;
+@sale_label_color : @d_sale_label_color;
+@easyslider_background_color : @d_easyslider_background_color;
+body {
+	color: @text_color;
+}
+a,.products-list .desc a.link-learn {
+	color: @link_color;
+}
+a:hover,.contact-us i:hover,.products-list .desc a.link-learn:hover,.f-fix .price-box .price,
+.header .mini-cart .block-content .price,.mini-cart-act a:hover i,p.required,
+#shopping-cart-table .icon-edit:hover,
+#shopping-cart-table .icon-trash:hover,
+#shopping-cart-table .cart-price,
+.form-list label.required em,
+.cart .totals .a-right .price,
+#login-form .col2-set .registered-users .content p.required {
+	color: @active_color;
+}
+.step-title .number {
+  color: #fff;
+}
+#default-menu #nav li a,
+#wide-menu #nav > li > a,
+#wide-menu #nav ul.level0 > li > a,
+.footer-info-top .footer-info li,
+.footer-info-container .footer-info .about-responsive h4,
+.footer-info .newsletter-box .form-subscribe-header,
+.bottom-menu-column h4,
+.footer-aditional .facebook h4,
+.footer-aditional .twitter h4,
+.category-title h1,
+.left-categories .block-title span,
+.block .block-title strong span,
+#block-viewed strong span,
+.custom-html strong span,
+.home-content h3.title, .who-we-are h1,
+.main .col-main .page-title h1,
+.col-main .cart-empty a,
+.about-content .wel-come h2,
+.about-content .center-title h1,
+.about-content h2,
+.afew-container .retina-ready h3, .afew-container .mobile-friendly h3, .afew-container .wide-or h3, .afew-container .responsive-layout h3
+ {
+	font-family: '@{heading_font}',sans-serif;
+}
+.wrapper {
+	background-color: @background_color;
+}
+.header .form-search input.input-text {
+	background: none;
+}
+.header .form-search:hover input.input-text,
+.cart-collaterals .cart-accordion-heading .cart-accordion-toggle,.cart .totals,.opc .step-title,
+.opc .active .step-title,.opc .allow .step-title,
+#opc-login h3,
+.account-login .new-users,
+.account-login .registered-users,.main-container .main .col-main .account-login .page-title {
+    border-color: #14141d;
+}
+.account-login .new-users:hover,
+.account-login .registered-users:hover {
+    border-color: #82ADB8;
+}
+.cart .totals .checkout-types li .button,#shopping-cart-table .btn-continue, #shopping-cart-table .btn-update {
+    background: #565656;
+}
+.header .mini-cart .block-content .button-shopcart:hover,
+.button:hover,.button-set .form-button:hover,
+.header .form-search button.button,
+.header .shopping-cart:hover .cart_circle,
+.footer-info .newsletter-box .input-box button.button,#toTop,
+.header .mini-cart .cart_circle.active, 
+.header .mini-cart .cart_circle.active:hover,.col-main .cart-empty a:hover {
+	background-color: @active_color;
+}
+.sorter .view-mode .grid:hover, .sorter .view-mode strong,.sorter .view-mode a:hover, 
+.sorter .view-mode strong,.products-list .btn-cart:hover,
+.cart .totals .checkout-types li .button:hover,
+#shopping-cart-table .btn-continue:hover , 
+#shopping-cart-table .btn-update:hover,
+#twitter_update_list li .tweet-icon,
+.opc .step-title .number {
+	background-color: @active_color !important;
+}
+.data-table tr td,
+.data-table thead tr th, 
+.data-table thead tr td{
+    background: #000 !important;
+}
+.header .mini-cart .block-content {
+	border:0 !important;
+	background:#414147 !important;
+}
+input.input-text, select, textarea {
+	background: #22222a;
+	border: #22222a solid 1px;
+}
+h1, h2, h3, h4, h5, h6,.block .block-title strong span,.custom-html strong span,.left-categories .block-title span,.footer-info .newsletter-box .form-subscribe-header {
+	color: @heading_color !important;
+}
+.top-dropdown ul,#wide-menu #nav ul.level0,.sorter .sort-by ul,.sorter .limiter ul {
+	background: #414147;
+	border: 0;
+}
+#wide-menu #nav > li > a,#default-menu #nav > li > a {
+	border: 0;
+}
+#wide-menu #nav > li:hover > a,
+#default-menu #nav > li:hover > a
+ {
+	background: #414147;
+	color: @active_color !important;
+	border: 0;
+}
+.price-box .price,.f-fix .special-price .price,.top-dropdown li,.top-header .i-top-links .welcome-msg,#wide-menu #nav > li.active > a,#wide-menu #nav > li.parent:hover > a, #wide-menu #nav > li.parent.active > a,#wide-menu #nav ul.level0 > li > a,#wide-menu #nav ul li a:hover,.sorter .sort-by ul li a.active,.sorter .limiter ul li a.active,.special-price .price,.block .regular-price, .block .regular-price .price,.regular-price .price,.footer-info-container .footer-info .contact-us span,#default-menu #nav li.active a {
+	color: @active_color;
+}
+#default-menu #nav ul	li a:hover,#default-menu #nav ul li.active a {
+	color: @active_color !important;
+}
+.main-container,.breadcrumbs-container,.f-fix .ratings .rating-links,.products-list li.item,
+.data-table tfoot tr.first td,.data-table,.data-table tbody td,
+.data-table thead tr.last th, .data-table thead tr.last td,
+.data-table tr.last td, .data-table tr.last th {
+	border-color: #14141c !important;
+}
+.top-header-container {
+    background: url("../../images/dot-line-dark.png") repeat-x scroll 100% 100% transparent;
+}
+.left-categories,.block-layered-nav {
+	background: #151d1f;
+	border: 0;
+}
+.left-categories .block-title,#block-layered-nav {border:0;}
+.footer-info-top {
+    background: url("../../images/dot-line-dark.png") repeat-x scroll left top transparent;
+}
+.footer-info-container,.footer-container,.toolbar-bottom,.sorter .sort-by .current,.sorter .limiter .current {
+    border-color: #14141d;
+}
+.footer-info-top i,.contact-us i{
+	color: @icons_color;
+}
+.mini-cart-act a {
+	color: @icons_color;
+	&:hover{
+		color: @active_color;
+	}
+}
+.footer-info-container .footer-info li {border:#14141c solid 1px;}
+.footer-info-container .footer-info .about-responsive img {border: 0}
+.home-content h3.title, .who-we-are h1 {background: #040404 !important}
+.home-list-title, .who-we-are .who-center {background: url("../../images/bg-border-center-dark.png") repeat-x scroll 100% 50% transparent;}
+.product-shop .product-name h1,.product-view .product-shop .short-description,.product-tabs-content,.product-collateral .right-block {
+	border-color:#14141C;
+}
+.product-tabs a:hover, .product-tabs li.active a, .product-tabs li.active a:hover {border-color:@active_color;}
+.button, button, input[type="submit"], input[type="reset"], input[type="button"],.products-list .btn-cart,#shopping-cart-table .btn-continue, #shopping-cart-table .btn-update {
+	background-color: @buttons_color;
+	&:hover {
+		background-color: @buttons_hover_color;
+	}
+}
+.cart .totals .checkout-types li .button {
+	background-color: @active_color;
+	&:hover{
+		background-color: @buttons_color;
+	}
+}
+.nova-new-label {
+	background-color: @new_label_color;
+}
+.nova-sale-label {
+	background-color: @sale_label_color;
+}
+.easy-slider {background: @easyslider_background_color;}
